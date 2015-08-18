@@ -40,7 +40,7 @@ public class DataAnalysis {
 	 * @throws ParseException 
 	 */
 	public static void main(String[] args) throws IOException, ParseException {
-		String filepath = "d:/重庆时时彩A.txt";
+		String filepath = "d:/重庆时时彩B.txt";
 		DataAnalysis analysisTools = new DataAnalysis();
 //		System.out.println("\t星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六");
 		analysisTools.readfile(filepath);
@@ -187,7 +187,7 @@ public class DataAnalysis {
 		String number = null;
 		if (issueAndNumber.length == 2) {
 			number = issueAndNumber[1];
-			number = number.substring(0, 1);
+			number = number.substring(4, 5);
 			String[] dateAndIssue = issueAndNumber[0].split("-");
 			date = dateAndIssue[0];
 			issue = dateAndIssue[1];
@@ -196,7 +196,7 @@ public class DataAnalysis {
 			enddate = date;
 			endissue = issue;
 			dataStack.push(number);
-		} else if (needPushDX(number)){
+		} else if (needPushDS(number)){
 			begindate = date;
 			beginissue = issue;
 			dataStack.push(number);
@@ -221,6 +221,9 @@ public class DataAnalysis {
 				appearcount++;
 			}
 			dataStack.clear();
+			begindate = date;
+			beginissue = issue;
+			dataStack.push(number);
 		}
 	}
 
