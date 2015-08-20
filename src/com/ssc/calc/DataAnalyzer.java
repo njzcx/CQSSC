@@ -8,6 +8,8 @@ public class DataAnalyzer {
 	
 	private List data;
 	
+	private List filterData;
+	
 	private Filter filter;
 	
 	public DataAnalyzer(List data, Filter filter) {
@@ -15,11 +17,14 @@ public class DataAnalyzer {
 		this.filter = filter;
 	}
 	
-	public void doAnalysis() {
-		
+	public void doAnalysis() throws Exception {
+		filter.loadData(data);
+		filterData = filter.dofilter();
 	}
 	
 	public void showResult() {
-		
+		if (filterData != null) {
+			System.out.println(filterData.size());
+		}
 	}
 }
