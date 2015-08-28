@@ -33,15 +33,30 @@ public class DataAnalysis {
 	
 	Stack<String> dataStack = new Stack<String>();
 	
-
+	/**
+	 * 哪一位
+	 */
+	int digit = 0;
+	
+	/**
+	 * 单双或大小
+	 */
+	String type;
+	
+	public static final String TYPE_BIG_SMALL = "大小";
+	public static final String TYPE_SINGLE_DOUBLE = "单双";
 	/**
 	 * @param args
 	 * @throws IOException 
 	 * @throws ParseException 
 	 */
 	public static void main(String[] args) throws IOException, ParseException {
-		String filepath = "d:/重庆时时彩B.txt";
+		String filepath = "d:/" + "重庆时时彩B" + ".txt";
 		DataAnalysis analysisTools = new DataAnalysis();
+		analysisTools.checkcount = 9;
+		analysisTools.digit = 5;
+		analysisTools.type = TYPE_BIG_SMALL;
+//		analysisTools.type = TYPE_SINGLE_DOUBLE;
 //		System.out.println("\t星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六");
 		analysisTools.readfile(filepath);
 	}
@@ -116,7 +131,7 @@ public class DataAnalysis {
 				i++;
 			}
 			countWeekAndHour();
-			System.out.println("出现" + checkcount + "连杀以上的次数为" + appearcount + "次");
+			System.out.println("第" + digit + "位出现" + checkcount + "连" + type + "以上的次数为" + appearcount + "次");
 			System.out.println("最大连杀为" + max + "次,数据为" + maxdata);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -135,7 +150,7 @@ public class DataAnalysis {
 	 * 统计周和小时连续出现N次的次数
 	 */
 	private void countWeekAndHour() {
-		System.out.println("\t星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六\t平均值");
+		System.out.println("\t星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六\t总数\t平均值");
 		int[] avgWeek = new int[7]; 
 		for (int hour = 0; hour < 24; hour++) {
 			int avgHour = 0;
@@ -151,6 +166,8 @@ public class DataAnalysis {
 				}
 				System.out.print("\t");
 			}
+			System.out.print(avgHour);
+			System.out.print("\t");
 			if (avgHour != 0) {
 				System.out.print(avgHour/7.0);
 			}
@@ -187,7 +204,7 @@ public class DataAnalysis {
 		String number = null;
 		if (issueAndNumber.length == 2) {
 			number = issueAndNumber[1];
-			number = number.substring(4, 5);
+			number = number.substring(digit-1, digit);
 			String[] dateAndIssue = issueAndNumber[0].split("-");
 			date = dateAndIssue[0];
 			issue = dateAndIssue[1];
@@ -196,7 +213,7 @@ public class DataAnalysis {
 			enddate = date;
 			endissue = issue;
 			dataStack.push(number);
-		} else if (needPushDS(number)){
+		} else if ((TYPE_SINGLE_DOUBLE.equals(type) && needPushDS(number)) || (TYPE_BIG_SMALL.equals(type) && needPushDX(number))){
 			begindate = date;
 			beginissue = issue;
 			dataStack.push(number);
