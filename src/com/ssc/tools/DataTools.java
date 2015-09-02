@@ -51,8 +51,13 @@ public class DataTools {
 			calendar.set(Calendar.MINUTE, totalminute%60);
 		} 
 		if (isFivePeriod(databean)) {
-			int totalminute = SEPARATE_HOUR_PM * 60 + (issue - SEPARATE_ISSUE_PM) * PERIOD_FIVE;
-			calendar.set(Calendar.HOUR, (totalminute/60)%24);
+			int totalminute;
+			if (issue <= SEPARATE_ISSUE_AM) {
+				totalminute = issue * PERIOD_FIVE;
+			} else {
+				totalminute = SEPARATE_HOUR_PM * 60 + (issue - SEPARATE_ISSUE_PM) * PERIOD_FIVE;
+			}
+			calendar.set(Calendar.HOUR, totalminute/60);
 			calendar.set(Calendar.MINUTE, totalminute%60);
 		}
 		return calendar.getTime();
@@ -73,7 +78,7 @@ public class DataTools {
 	
 	public static boolean isFivePeriod(DataBean databean) {
 		int issue = Integer.parseInt(databean.getIssue());
-		if(issue <= SEPARATE_ISSUE_AM && issue > SEPARATE_ISSUE_PM) {
+		if(issue <= SEPARATE_ISSUE_AM || issue > SEPARATE_ISSUE_PM) {
 			return true;
 		}
 		return false;

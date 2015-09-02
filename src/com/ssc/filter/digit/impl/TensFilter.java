@@ -9,7 +9,8 @@ public class TensFilter extends DigitFilter {
 	@Override
 	public List dofilter() throws Exception {
 		String lotteryNumber = getLotteryNumber();
-		setFilterResult(lotteryNumber.split("")[3]);
+		String keyNum = Character.toString(lotteryNumber.toCharArray()[3]);
+		setFilterResult(keyNum);
 		return null;
 	}
 

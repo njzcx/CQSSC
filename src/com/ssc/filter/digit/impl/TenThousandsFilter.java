@@ -9,7 +9,8 @@ public class TenThousandsFilter extends DigitFilter {
 	@Override
 	public List dofilter() throws Exception {
 		String lotteryNumber = getLotteryNumber();
-		setFilterResult(lotteryNumber.split("")[0]);
+		String keyNum = Character.toString(lotteryNumber.toCharArray()[0]);
+		setFilterResult(keyNum);
 		return null;
 	}
 

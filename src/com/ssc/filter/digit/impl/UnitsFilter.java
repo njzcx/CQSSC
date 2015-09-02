@@ -9,7 +9,8 @@ public class UnitsFilter extends DigitFilter {
 	@Override
 	public List dofilter() throws Exception {
 		String lotteryNumber = getLotteryNumber();
-		setFilterResult(lotteryNumber.split("")[4]);
+		String keyNum = Character.toString(lotteryNumber.toCharArray()[4]);
+		setFilterResult(keyNum);
 		return null;
 	}
 

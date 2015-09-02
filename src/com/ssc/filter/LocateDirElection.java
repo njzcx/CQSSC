@@ -48,8 +48,10 @@ public abstract class LocateDirElection implements Filter {
 		if (datastack.isEmpty() || needPushStack(databean)) {
 			datastack.push(databean);
 		} else {
-			if (datastack.size() >= lowerLimit && datastack.size() < upperLimit) {
-				filterData.add(datastack.subList(0, datastack.size()));
+			if (datastack.size() >= lowerLimit && datastack.size() <= upperLimit) {
+				List sublist = new ArrayList();
+				sublist.addAll(datastack.subList(0, datastack.size()));
+				filterData.add(sublist);
 			}
 			datastack.clear();
 			datastack.push(databean);

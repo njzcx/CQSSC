@@ -11,6 +11,9 @@
 		<url-pattern>/datacalc.do</url-pattern>
 	</servlet-mapping>
 
+	<listener>
+		<listener-class>com.ssc.core.ApplicationListener</listener-class>
+	</listener>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>index.html</welcome-file>

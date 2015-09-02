@@ -5,6 +5,12 @@ import java.util.List;
 import com.ssc.filter.Filter;
 
 public abstract class DigitFilter implements Filter {
+	
+	public static final String DIGIT_UNITS = "5";
+	public static final String DIGIT_TENS = "4";
+	public static final String DIGIT_HUNDREDS = "3";
+	public static final String DIGIT_THOUSANDS = "2";
+	public static final String DIGIT_TENTHOUSANDS = "1";
 
 	private String lotteryNumber;
 	

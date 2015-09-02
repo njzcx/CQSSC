@@ -9,7 +9,8 @@ public class HundredsFilter extends DigitFilter {
 	@Override
 	public List dofilter() throws Exception {
 		String lotteryNumber = getLotteryNumber();
-		setFilterResult(lotteryNumber.split("")[2]);
+		String keyNum = Character.toString(lotteryNumber.toCharArray()[2]);
+		setFilterResult(keyNum);
 		return null;
 	}
 

@@ -27,4 +27,8 @@ public class DataAnalyzer {
 			System.out.println(filterData.size());
 		}
 	}
+	
+	public List getResult() {
+		return filterData;
+	}
 }
