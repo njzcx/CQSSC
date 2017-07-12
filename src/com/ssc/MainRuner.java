@@ -17,7 +17,7 @@ public class MainRuner {
 		/*获取文件路径*/
 		Properties prop = new Properties();
 		prop.load(MainRuner.class.getResourceAsStream("conf/conf.properties"));
-		String filepath = prop.getProperty("filepathB");
+		String filepath = prop.getProperty("filepathA");
 		/*读取数据*/
 		LotteryFileReader filereader = new LotteryFileReader();
 		List data = filereader.readfile(filepath);
@@ -29,6 +29,6 @@ public class MainRuner {
 		DataAnalyzer analyzer = new DataAnalyzer(data, filter);
 		analyzer.doAnalysis();
 		/*展示分析结果*/
-		analyzer.showResult();
+		analyzer.showResult();--
 	}
 }

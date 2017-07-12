@@ -24,7 +24,7 @@ public class LotteryFileReader {
 				dataList.add(databean);
 			}
 		} catch (Exception e) {
-			throw new Exception("读取文件异常");
+			throw new Exception("读取文件异常", e);
 		} finally {
 			if (reader != null) {
 				try {

@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.Stack;
+
+import com.ssc.MainRuner;
 
 
 public class DataAnalysis {
@@ -51,10 +54,13 @@ public class DataAnalysis {
 	 * @throws ParseException 
 	 */
 	public static void main(String[] args) throws IOException, ParseException {
-		String filepath = "d:/" + "重庆时时彩B" + ".txt";
+		/*获取文件路径*/
+		Properties prop = new Properties();
+		prop.load(MainRuner.class.getResourceAsStream("conf/conf.properties"));
+		String filepath = prop.getProperty("filepathA");
 		DataAnalysis analysisTools = new DataAnalysis();
 		analysisTools.checkcount = 9;
-		analysisTools.digit = 5;
+		analysisTools.digit = 1;
 		analysisTools.type = TYPE_BIG_SMALL;
 //		analysisTools.type = TYPE_SINGLE_DOUBLE;
 //		System.out.println("\t星期日\t星期一\t星期二\t星期三\t星期四\t星期五\t星期六");

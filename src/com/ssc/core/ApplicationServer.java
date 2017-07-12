@@ -32,7 +32,7 @@ public class ApplicationServer {
 		/*获取文件路径*/
 		Properties prop = new Properties();
 		prop.load(ApplicationServer.class.getResourceAsStream("../conf/conf.properties"));
-		String filepath = prop.getProperty("filepathB");
+		String filepath = prop.getProperty("filepathA");
 		/*读取数据*/
 		LotteryFileReader filereader = new LotteryFileReader();
 		data = filereader.readfile(filepath);
