@@ -29,6 +29,6 @@ public class MainRuner {
 		DataAnalyzer analyzer = new DataAnalyzer(data, filter);
 		analyzer.doAnalysis();
 		/*展示分析结果*/
-		analyzer.showResult();--
+		analyzer.showResult();
 	}
 }
